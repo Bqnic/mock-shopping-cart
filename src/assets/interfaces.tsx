@@ -13,6 +13,20 @@ export interface Product {
   rating: Rating;
 }
 
+export interface ProductWithQuantity {
+  product: Product;
+  quantity: number;
+}
+
 export interface StoreProps {
   products: Product[];
+}
+
+export interface ItemProps {
+  products: Product[];
+  addProductToCart: Function;
+}
+
+export interface CartProps {
+  productsInCart: ProductWithQuantity[];
 }
