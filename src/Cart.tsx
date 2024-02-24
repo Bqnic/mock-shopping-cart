@@ -7,20 +7,24 @@ export default function Cart({ productsInCart }: CartProps) {
   }
 
   return (
-    <div>
+    <div className="flex flex-col flex-wrap m-10 gap-5">
       {productsInCart.map((productInCart) => (
-        <div>
+        <div className="flex flex-col justify-center">
           <p>{productInCart.product.title}</p>
-          <img src={productInCart.product.image} alt="image" />
-          <p>{productInCart.product.price}</p>
-          <p>{productInCart.quantity}</p>
+          <img
+            className="w-36 h-36"
+            src={productInCart.product.image}
+            alt="image"
+          />
+          <p>Price: {productInCart.product.price}$</p>
+          <p>Quantity: {productInCart.quantity}</p>
           <p>
-            Calculated price with quantity:{" "}
-            {(productInCart.product.price * productInCart.quantity).toFixed(2)}
+            Total price:{" "}
+            {(productInCart.product.price * productInCart.quantity).toFixed(2)}$
           </p>
         </div>
       ))}
-      <p>Total price: {totalPrice.toFixed(2)}</p>
+      <p>Cart: {totalPrice.toFixed(2)}$</p>
     </div>
   );
 }
