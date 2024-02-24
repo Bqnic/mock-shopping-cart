@@ -22,7 +22,11 @@ export default function Item({ products, addProductToCart }: ItemProps) {
       <div className="gap-2 flex flex-col flex-wrap w-96">
         <p className="underline">{product?.category}</p>
         <p className="text-2xl">{product?.title}</p>
-        <img className="w-96 h-96" src={product?.image} alt="image" />
+        <img
+          className="w-96 h-96 border border-black"
+          src={product?.image}
+          alt="image"
+        />
 
         <div className="flex gap-3">
           <label className="text-xl" htmlFor="quantity">

@@ -60,20 +60,22 @@ function App() {
         </Link>
       </nav>
 
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="store" element={<Store products={products} />}></Route>
-        <Route
-          path="/store/:productID"
-          element={
-            <Item products={products} addProductToCart={addProductToCart} />
-          }
-        ></Route>
-        <Route
-          path="cart"
-          element={<Cart productsInCart={productsInCart} />}
-        ></Route>
-      </Routes>
+      <div className="flex justify-center items-center">
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="store" element={<Store products={products} />}></Route>
+          <Route
+            path="/store/:productID"
+            element={
+              <Item products={products} addProductToCart={addProductToCart} />
+            }
+          ></Route>
+          <Route
+            path="cart"
+            element={<Cart productsInCart={productsInCart} />}
+          ></Route>
+        </Routes>
+      </div>
     </>
   );
 }
