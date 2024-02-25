@@ -23,24 +23,36 @@ function App() {
 
   function addProductToCart(product: Product, quantity: number) {
     let productArray = [...productsInCart];
-    if (!checkIfProductIsAlreadyInCart(productArray, product, quantity))
-      productArray.push({ product: product, quantity: quantity });
+    let existingProductIndex: number = checkIfProductIsAlreadyInCart(
+      productArray,
+      product
+    );
+
+    if (existingProductIndex >= 0) {
+      if (productArray[existingProductIndex].quantity === 100) {
+        alert("There is already the entire stock in your cart.");
+        return false;
+      } else {
+        if (productArray[existingProductIndex].quantity + quantity > 100)
+          productArray[existingProductIndex].quantity = 100;
+        else productArray[existingProductIndex].quantity += quantity;
+      }
+    } else productArray.push({ product: product, quantity: quantity });
 
     setProductsInCart(productArray);
+    return true;
   }
 
   function checkIfProductIsAlreadyInCart(
     productArray: ProductWithQuantity[],
-    product: Product,
-    moreQuantity: number
+    product: Product
   ) {
     for (let i = 0; i < productArray.length; i++) {
       if (productArray[i].product === product) {
-        productArray[i].quantity += moreQuantity;
-        return true;
+        return i;
       }
     }
-    return false;
+    return -1;
   }
 
   return (

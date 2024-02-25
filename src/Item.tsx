@@ -49,19 +49,24 @@ export default function Item({ products, addProductToCart }: ItemProps) {
                 "quantity"
               ) as HTMLSelectElement;
 
-              addProductToCart(product, content ? parseInt(content.value) : 1);
+              const didAdd: boolean = addProductToCart(
+                product,
+                content ? parseInt(content.value) : 1
+              );
 
-              document.getElementById("notify")?.classList.add("active");
-              document
-                .getElementById("add-to-cart")
-                ?.setAttribute("disabled", "true");
-
-              setTimeout(() => {
-                document.getElementById("notify")?.classList.remove("active");
+              if (didAdd) {
+                document.getElementById("notify")?.classList.add("active");
                 document
                   .getElementById("add-to-cart")
-                  ?.removeAttribute("disabled");
-              }, 1500);
+                  ?.setAttribute("disabled", "true");
+
+                setTimeout(() => {
+                  document.getElementById("notify")?.classList.remove("active");
+                  document
+                    .getElementById("add-to-cart")
+                    ?.removeAttribute("disabled");
+                }, 1500);
+              }
             }}
           >
             Add To Cart
