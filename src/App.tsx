@@ -57,7 +57,7 @@ function App() {
 
   return (
     <>
-      <nav className="flex gap-10 justify-center align-middle text-xl p-3 transition-all duration-500">
+      <nav className="ml-auto flex gap-10 justify-center align-middle text-xl p-3 transition-all duration-500">
         <Link to="/" className="hover:text-2xl transition-all duration-500">
           Home
         </Link>
@@ -71,6 +71,12 @@ function App() {
           Cart
         </Link>
       </nav>
+
+      <img
+        className="w-14 h-14 absolute right-0 top-0"
+        src="../cart.png"
+        alt="cart"
+      />
 
       <div className="flex justify-center items-center">
         <Routes>
