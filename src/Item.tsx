@@ -1,12 +1,21 @@
 import { useParams } from "react-router-dom";
 import { ItemProps, Product } from "./assets/interfaces";
+import OtherItems from "./OtherItems";
 
-export default function Item({ products, addProductToCart }: ItemProps) {
+export default function Item({
+  products,
+  addProductToCart,
+  closeCart,
+}: ItemProps) {
   const { productID } = useParams();
 
   const product: Product | undefined = productID
     ? products.find((product) => product.id === parseInt(productID))
     : undefined;
+
+  const sameCategoryProducts: Product[] = products.filter(
+    (element) => element.category === product?.category
+  );
 
   const options = [];
   for (let i = 1; i <= 100; i++) {
@@ -18,7 +27,7 @@ export default function Item({ products, addProductToCart }: ItemProps) {
   }
 
   return (
-    <>
+    <div className="flex flex-col">
       <div className="flex items-center justify-center p-6 gap-32">
         <div className="gap-2 flex flex-col flex-wrap w-96">
           <p className="underline">{product?.category}</p>
@@ -87,6 +96,11 @@ export default function Item({ products, addProductToCart }: ItemProps) {
         <p>Added to cart successfully!</p>
         <div className="tn-progress"></div>
       </div>
-    </>
+
+      <div className="flex flex-col justify-center p-5 mt-8">
+        <p className="text-2xl mb-5">Other items from the same category:</p>
+        <OtherItems products={sameCategoryProducts} closeCart={closeCart} />
+      </div>
+    </div>
   );
 }

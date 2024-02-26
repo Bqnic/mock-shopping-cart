@@ -26,10 +26,16 @@ export interface StoreProps {
 export interface ItemProps {
   products: Product[];
   addProductToCart: Function;
+  closeCart: Function;
 }
 
 export interface CartProps {
   productsInCart: ProductWithQuantity[];
   setProductsInCart: Function;
+  closeCart: Function;
+}
+
+export interface OtherItemsProps {
+  products: Product[];
   closeCart: Function;
 }

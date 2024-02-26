@@ -107,7 +107,11 @@ function App() {
           <Route
             path="/store/:productID"
             element={
-              <Item products={products} addProductToCart={addProductToCart} />
+              <Item
+                products={products}
+                addProductToCart={addProductToCart}
+                closeCart={closeCart}
+              />
             }
           ></Route>
           <Route path="about" element={<About />}></Route>
