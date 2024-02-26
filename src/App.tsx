@@ -13,11 +13,23 @@ function App() {
   const [productsInCart, setProductsInCart] = useState<ProductWithQuantity[]>(
     []
   );
+  const [featured, setFeatured] = useState<Product[]>([]);
+
+  function selectRandomFeaturedProducts(prods: Product[]) {
+    const featuredProducts: Product[] = [];
+    let randomNumber: number = Math.floor(Math.random() * 14);
+    for (let i = 0; i < 5; i++) {
+      featuredProducts.push(prods[randomNumber + i]);
+    }
+
+    setFeatured(featuredProducts);
+  }
 
   useEffect(() => {
     async function fetchData() {
       const data: Product[] = await getProducts();
       setProducts(data);
+      selectRandomFeaturedProducts(data);
     }
     fetchData();
   }, []);
@@ -99,7 +111,10 @@ function App() {
 
       <div className="flex justify-center items-center">
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route
+            path="/"
+            element={<Home featured={featured} closeCart={closeCart} />}
+          ></Route>
           <Route
             path="store"
             element={<Store products={products} closeCart={closeCart} />}

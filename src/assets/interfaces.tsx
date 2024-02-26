@@ -39,3 +39,8 @@ export interface OtherItemsProps {
   products: Product[];
   closeCart: Function;
 }
+
+export interface HomeProps {
+  featured: Product[];
+  closeCart: Function;
+}
