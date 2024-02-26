@@ -6,6 +6,7 @@ import Store from "./Store";
 import { Product, ProductWithQuantity } from "./assets/interfaces";
 import Cart from "./Cart";
 import Item from "./Item";
+import About from "./About";
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -55,45 +56,65 @@ function App() {
     return -1;
   }
 
+  function openCart() {
+    document.getElementById("cart")?.classList.add("opened");
+  }
+
+  function closeCart() {
+    document.getElementById("cart")?.classList.remove("opened");
+  }
+
   return (
     <>
-      <nav className="ml-auto flex gap-10 justify-center align-middle text-xl p-3 transition-all duration-500">
-        <Link to="/" className="hover:text-2xl transition-all duration-500">
+      <nav className="flex gap-10 justify-center align-middle text-xl p-3 transition-all duration-500">
+        <Link
+          onClick={() => closeCart()}
+          to="/"
+          className="hover:text-2xl transition-all duration-500"
+        >
           Home
         </Link>
         <Link
+          onClick={() => closeCart()}
           to="/store"
           className="hover:text-2xl transition-all duration-500"
         >
           Store
         </Link>
-        <Link to="/cart" className="hover:text-2xl transition-all duration-500">
-          Cart
+        <Link
+          onClick={() => closeCart()}
+          to="/about"
+          className="hover:text-2xl transition-all duration-500"
+        >
+          About
         </Link>
       </nav>
 
       <img
-        className="w-14 h-14 absolute right-0 top-0"
+        className="w-14 h-14 absolute right-0 top-0 cursor-pointer"
         src="../cart.png"
         alt="cart"
+        onClick={() => openCart()}
       />
 
       <div className="flex justify-center items-center">
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="store" element={<Store products={products} />}></Route>
+          <Route
+            path="store"
+            element={<Store products={products} closeCart={closeCart} />}
+          ></Route>
           <Route
             path="/store/:productID"
             element={
               <Item products={products} addProductToCart={addProductToCart} />
             }
           ></Route>
-          <Route
-            path="cart"
-            element={<Cart productsInCart={productsInCart} />}
-          ></Route>
+          <Route path="about" element={<About />}></Route>
         </Routes>
       </div>
+
+      <Cart productsInCart={productsInCart} closeCart={closeCart} />
     </>
   );
 }

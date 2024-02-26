@@ -20,6 +20,7 @@ export interface ProductWithQuantity {
 
 export interface StoreProps {
   products: Product[];
+  closeCart: Function;
 }
 
 export interface ItemProps {
@@ -29,4 +30,5 @@ export interface ItemProps {
 
 export interface CartProps {
   productsInCart: ProductWithQuantity[];
+  closeCart: Function;
 }

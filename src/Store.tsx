@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Product, StoreProps } from "./assets/interfaces";
 import { useNavigate } from "react-router-dom";
 
-export default function Store({ products }: StoreProps) {
+export default function Store({ products, closeCart }: StoreProps) {
   const navigate = useNavigate();
   const [filter, setFilter] = useState<string>("all items");
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
@@ -71,6 +71,7 @@ export default function Store({ products }: StoreProps) {
             className="bg-white w-64 h-64 flex flex-col justify-center items-center border border-black p-5"
             key={product.id}
             onClick={() => {
+              closeCart();
               navigate(`/store/${product.id}`);
             }}
           >

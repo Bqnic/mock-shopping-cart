@@ -88,3 +88,29 @@ body {
 .tn-box.active .tn-progress {
   animation: runProgress 0.75s linear forwards 0.5s;
 }
+#cart {
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  background-color: #fafafa;
+  height: 0;
+  width: 30vw;
+  border: 1px solid black;
+  overflow: hidden;
+  transition: opacity 0.5s, height 0.5s;
+}
+
+#cart.opened {
+  opacity: 1;
+  pointer-events: auto;
+  height: 100vh;
+  transition: opacity 0.5s, height 0.5s;
+}
