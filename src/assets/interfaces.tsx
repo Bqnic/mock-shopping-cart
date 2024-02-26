@@ -30,5 +30,6 @@ export interface ItemProps {
 
 export interface CartProps {
   productsInCart: ProductWithQuantity[];
+  setProductsInCart: Function;
   closeCart: Function;
 }

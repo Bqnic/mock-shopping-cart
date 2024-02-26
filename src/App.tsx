@@ -114,7 +114,11 @@ function App() {
         </Routes>
       </div>
 
-      <Cart productsInCart={productsInCart} closeCart={closeCart} />
+      <Cart
+        productsInCart={productsInCart}
+        setProductsInCart={setProductsInCart}
+        closeCart={closeCart}
+      />
     </>
   );
 }
