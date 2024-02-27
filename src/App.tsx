@@ -6,7 +6,6 @@ import Store from "./Store";
 import { Product, ProductWithQuantity } from "./assets/interfaces";
 import Cart from "./Cart";
 import Item from "./Item";
-import About from "./About";
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -78,7 +77,7 @@ function App() {
 
   return (
     <>
-      <nav className="flex gap-10 justify-center align-middle text-xl p-3 transition-all duration-500">
+      <nav className="flex gap-10 fixed w-screen justify-center text-xl p-3 transition-all duration-500 border-b border-black bg-neutral-100">
         <Link
           onClick={() => closeCart()}
           to="/"
@@ -93,51 +92,52 @@ function App() {
         >
           Store
         </Link>
-        <Link
-          onClick={() => closeCart()}
-          to="/about"
-          className="hover:text-2xl transition-all duration-500"
-        >
-          About
-        </Link>
       </nav>
 
       <img
-        className="w-14 h-14 absolute right-0 top-0 cursor-pointer"
+        className="w-12 h-12 fixed right-0 top-0 cursor-pointer"
         src="../cart.png"
         alt="cart"
         onClick={() => openCart()}
       />
+      <div className="flex flex-col justify-center items-center">
+        <div className="max-w-7xl">
+          <div className="flex justify-center items-center">
+            <Routes>
+              <Route
+                path="/"
+                element={<Home featured={featured} closeCart={closeCart} />}
+              ></Route>
+              <Route
+                path="store"
+                element={<Store products={products} closeCart={closeCart} />}
+              ></Route>
+              <Route
+                path="/store/:productID"
+                element={
+                  <Item
+                    products={products}
+                    addProductToCart={addProductToCart}
+                    closeCart={closeCart}
+                  />
+                }
+              ></Route>
+            </Routes>
+          </div>
 
-      <div className="flex justify-center items-center">
-        <Routes>
-          <Route
-            path="/"
-            element={<Home featured={featured} closeCart={closeCart} />}
-          ></Route>
-          <Route
-            path="store"
-            element={<Store products={products} closeCart={closeCart} />}
-          ></Route>
-          <Route
-            path="/store/:productID"
-            element={
-              <Item
-                products={products}
-                addProductToCart={addProductToCart}
-                closeCart={closeCart}
-              />
-            }
-          ></Route>
-          <Route path="about" element={<About />}></Route>
-        </Routes>
+          <Cart
+            productsInCart={productsInCart}
+            setProductsInCart={setProductsInCart}
+            closeCart={closeCart}
+          />
+        </div>
       </div>
-
-      <Cart
-        productsInCart={productsInCart}
-        setProductsInCart={setProductsInCart}
-        closeCart={closeCart}
-      />
+      <footer className="flex justify-center items-center fixed bottom-0 border-t border-black w-screen bg-neutral-100 p-3">
+        <p>
+          Built by <a href="https://github.com/Bqnic">Bqnic</a> |
+          <a href="https://github.com/Bqnic/battleship"> Source code</a>
+        </p>
+      </footer>
     </>
   );
 }

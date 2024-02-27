@@ -13,9 +13,9 @@ export default function Item({
     ? products.find((product) => product.id === parseInt(productID))
     : undefined;
 
-  const sameCategoryProducts: Product[] = products.filter(
-    (element) => element.category === product?.category
-  );
+  const sameCategoryProducts: Product[] = products.filter((element) => {
+    if (element !== product) return element.category === product?.category;
+  });
 
   const options = [];
   for (let i = 1; i <= 100; i++) {
@@ -27,7 +27,7 @@ export default function Item({
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col m-20">
       <div className="flex items-center justify-center p-6 gap-32">
         <div className="gap-2 flex flex-col flex-wrap w-96">
           <p className="underline">{product?.category}</p>

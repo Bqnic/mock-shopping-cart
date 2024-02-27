@@ -9,7 +9,7 @@ export default function OtherItems({ products, closeCart }: OtherItemsProps) {
       <div className="flex justify-center flex-wrap gap-5">
         {products.map((product) => (
           <div
-            className="bg-white w-64 h-64 flex flex-col justify-center items-center border border-black p-5 hover:border-lime-600 hover:border-4"
+            className="bg-white w-64 h-64 flex flex-col justify-center items-center border border-black p-5 hover:border-sky-600 hover:border-4"
             key={product.id}
             onClick={() => {
               closeCart();

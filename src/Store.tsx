@@ -28,8 +28,8 @@ export default function Store({ products, closeCart }: StoreProps) {
   }
 
   return (
-    <div className="flex flex-col justify-center m-10">
-      <p className="text-5xl border-b-4 border-black w-full">Store</p>
+    <div className="flex flex-col justify-center m-20 max-w-5xl">
+      <div className="text-5xl border-b-4 border-black">Store</div>
       <div className="flex justify-between my-8">
         <p className="text-3xl">{filter}</p>
         <div className="flex gap-6">
