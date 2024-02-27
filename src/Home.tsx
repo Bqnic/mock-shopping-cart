@@ -43,7 +43,7 @@ export default function Home({ featured, closeCart }: HomeProps) {
               navigate(`/store/${product.id}`);
             }}
           >
-            <p className="xs:text-xs md:text-lg">{product.title}</p>
+            <p className="xs:text-xs md:text-base">{product.title}</p>
             <img
               className="xs:w-14 xs:h-14 md:w-36 md:h-36"
               src={product.image}

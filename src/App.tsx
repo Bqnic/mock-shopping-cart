@@ -8,6 +8,7 @@ import Cart from "./Cart";
 import Item from "./Item";
 import Footer from "./Footer";
 import Navigation from "./Navigation";
+import ErrorPage from "./ErrorPage";
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -110,6 +111,7 @@ function App() {
                   />
                 }
               ></Route>
+              <Route path="/*" element={<ErrorPage />}></Route>
             </Routes>
           </div>
 
