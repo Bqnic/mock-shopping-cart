@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import getProducts from "./assets/ProductsAPI";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import Store from "./Store";
 import { Product, ProductWithQuantity } from "./assets/interfaces";
 import Cart from "./Cart";
 import Item from "./Item";
+import Footer from "./Footer";
+import Navigation from "./Navigation";
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -77,22 +79,7 @@ function App() {
 
   return (
     <>
-      <nav className="flex gap-10 fixed w-screen justify-center text-xl p-3 transition-all duration-500 border-b border-black bg-neutral-100">
-        <Link
-          onClick={() => closeCart()}
-          to="/"
-          className="hover:text-2xl transition-all duration-500"
-        >
-          Home
-        </Link>
-        <Link
-          onClick={() => closeCart()}
-          to="/store"
-          className="hover:text-2xl transition-all duration-500"
-        >
-          Store
-        </Link>
-      </nav>
+      <Navigation closeCart={closeCart} />
 
       <img
         className="w-12 h-12 fixed right-0 top-0 cursor-pointer"
@@ -132,12 +119,8 @@ function App() {
           />
         </div>
       </div>
-      <footer className="flex justify-center items-center fixed bottom-0 border-t border-black w-screen bg-neutral-100 p-3">
-        <p>
-          Built by <a href="https://github.com/Bqnic">Bqnic</a> |
-          <a href="https://github.com/Bqnic/battleship"> Source code</a>
-        </p>
-      </footer>
+
+      <Footer />
     </>
   );
 }

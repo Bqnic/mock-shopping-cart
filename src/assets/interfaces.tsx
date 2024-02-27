@@ -44,3 +44,7 @@ export interface HomeProps {
   featured: Product[];
   closeCart: Function;
 }
+
+export interface NavigationProps {
+  closeCart: Function;
+}
