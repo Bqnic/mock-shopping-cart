@@ -6,7 +6,7 @@ export default function Home({ featured, closeCart }: HomeProps) {
 
   return (
     <div className="flex flex-col p-12 justify-center items-center h-screen w-screen">
-      <div className="text-xl flex items-center justify-around mb-10">
+      <div className="text-xl flex items-center justify-around mb-10 gap-10">
         <div className="flex flex-col gap-10">
           <p className="text-5xl">Welcome!</p>
           <div>
@@ -17,22 +17,15 @@ export default function Home({ featured, closeCart }: HomeProps) {
               and there is a cart here somewhere.
             </p>
             <p>
-              I'm just rambling at this point, I need to have some text so it
-              looks better design wise.
-            </p>
-            <p>
-              But i don't want to copy Lorem Ipsum (I will use it for about
-              page).
-            </p>
-            <p>
-              To be fair this text isn't creative but in my defense, here is a
-              random picture:
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Consequatur a voluptas incidunt, omnis est aperiam! Fugiat error
+              delectus assumenda illo.
             </p>
           </div>
         </div>
         <img
           className="w-72 h-72 hover:w-80 hover:h-80 transition-all duration-500"
-          src="../forest.svg"
+          src="../store.svg"
           alt=""
         />
       </div>
