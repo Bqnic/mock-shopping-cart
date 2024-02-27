@@ -28,10 +28,14 @@ export default function Store({ products, closeCart }: StoreProps) {
   }
 
   return (
-    <div className="flex flex-col justify-center m-20 max-w-5xl">
-      <div className="text-5xl border-b-4 border-black">Store</div>
-      <div className="flex justify-between my-8">
-        <p className="text-3xl">{filter}</p>
+    <div className="flex flex-col justify-center md:m-20 xs:mt-20 xs:mb-20 xs:max-w-xs md:max-w-5xl">
+      <div className="xs:flex xs:justify-center xs:items-center xs:text-xl md:block md:text-5xl border-b-4 border-black">
+        Store
+      </div>
+      <div className="xs:text-xs md:text-base md:flex md:justify-between my-8">
+        <p className="xs:text-transparent md:text-black md:text-3xl">
+          {filter}
+        </p>
         <div className="flex gap-6">
           <button
             onClick={() => filterProducts("all items")}
@@ -68,15 +72,19 @@ export default function Store({ products, closeCart }: StoreProps) {
       <div className="flex justify-center flex-wrap gap-5">
         {filteredProducts.map((product) => (
           <div
-            className="bg-white w-64 h-64 flex flex-col justify-center items-center border border-black p-5 hover:border-lime-600 hover:border-4"
+            className="flex flex-col justify-center items-center border border-black p-5 hover:border-lime-600 hover:border-4 bg-white md:w-64 md:h-64 xs:w-40 xs:h-40"
             key={product.id}
             onClick={() => {
               closeCart();
               navigate(`/store/${product.id}`);
             }}
           >
-            <p>{product.title}</p>
-            <img className="w-36 h-36" src={product.image} alt="image" />
+            <p className="xs:text-xs md:text-base">{product.title}</p>
+            <img
+              className="xs:w-14 xs:h-14 md:w-36 md:h-36"
+              src={product.image}
+              alt="image"
+            />
           </div>
         ))}
       </div>

@@ -27,13 +27,15 @@ export default function Item({
   }
 
   return (
-    <div className="flex flex-col m-20">
-      <div className="flex items-center justify-center p-6 gap-32">
-        <div className="gap-2 flex flex-col flex-wrap w-96">
+    <div className="flex flex-col xs:mt-20 xs:mb-20 md:m-20">
+      <div className="flex items-center justify-center md:flex-row xs:flex-col xs:gap-2 md:p-6 lg:gap-32">
+        <div className="gap-2 flex flex-col flex-wrap w-96 xs:justify-center xs:items-center">
           <p className="underline">{product?.category}</p>
-          <p className="text-2xl">{product?.title}</p>
+          <p className="md:text-2xl xs:text-md xs:text-center">
+            {product?.title}
+          </p>
           <img
-            className="w-96 h-96 border border-black"
+            className="lg:w-96 lg:h-96 md:w-60 md:h-60 xs:w-52 xs:h-52 border border-black"
             src={product?.image}
             alt="image"
           />
@@ -82,12 +84,14 @@ export default function Item({
           </button>
         </div>
 
-        <div className="w-96 gap-5 flex flex-col">
-          <p>{product?.description}</p>
-          <p className="text-4xl underline underline-offset-8">
+        <div className="w-96 gap-5 flex flex-col xs:justify-center xs:items-center">
+          <p className="xs:w-52 md:w-fit xs:text-xs xs:text-center md:text-base">
+            {product?.description}
+          </p>
+          <p className="md:text-4xl xs:text-2xl underline underline-offset-8">
             {product?.price}$
           </p>
-          <p className="text-2xl">
+          <p className="md:text-2xl">
             {product?.rating.rate}/5 over {product?.rating.count} user reviews
           </p>
         </div>
@@ -98,7 +102,9 @@ export default function Item({
       </div>
 
       <div className="flex flex-col justify-center p-5 mt-8">
-        <p className="text-2xl mb-5">Other items from the same category:</p>
+        <p className="text-2xl mb-5 text-center underline">
+          Other items from the same category
+        </p>
         <OtherItems products={sameCategoryProducts} closeCart={closeCart} />
       </div>
     </div>

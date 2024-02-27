@@ -3,7 +3,7 @@ import { NavigationProps } from "./assets/interfaces";
 
 export default function Navigation({ closeCart }: NavigationProps) {
   return (
-    <nav className="flex gap-10 fixed w-screen justify-center text-xl p-3 transition-all duration-500 border-b border-black bg-neutral-100">
+    <nav className="flex gap-10 fixed w-screen justify-center md:text-xl p-3 transition-all duration-500 border-b border-black bg-neutral-100">
       <Link
         onClick={() => closeCart()}
         to="/"

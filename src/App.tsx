@@ -19,7 +19,7 @@ function App() {
   function selectRandomFeaturedProducts(prods: Product[]) {
     const featuredProducts: Product[] = [];
     let randomNumber: number = Math.floor(Math.random() * 14);
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
       featuredProducts.push(prods[randomNumber + i]);
     }
 
@@ -82,11 +82,12 @@ function App() {
       <Navigation closeCart={closeCart} />
 
       <img
-        className="w-12 h-12 fixed right-0 top-0 cursor-pointer"
+        className="md:w-12 md:h-12 xs:w-10 xs:h-10 fixed right-0 top-0 cursor-pointer"
         src="../cart.png"
         alt="cart"
         onClick={() => openCart()}
       />
+
       <div className="flex flex-col justify-center items-center">
         <div className="max-w-7xl">
           <div className="flex justify-center items-center">

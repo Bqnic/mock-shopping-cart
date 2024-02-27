@@ -26,7 +26,7 @@ export default function Cart({
       </button>
       {productsInCart.length > 0 ? (
         <>
-          <div className="m-10 mt-16 p-12 h-3/4 overflow-auto flex flex-col border border-black bg-white">
+          <div className="m-10 mt-16 p-12 h-2/3 overflow-auto flex flex-col border border-black bg-white">
             {productsInCart.map((productInCart, index) => (
               <div
                 key={productInCart.product.id}
@@ -34,11 +34,11 @@ export default function Cart({
               >
                 <div className="flex justify-center items-center gap-12">
                   <img
-                    className="w-36 h-36"
+                    className="xs:w-24 xs:h-24 md:w-36 md:h-36"
                     src={productInCart.product.image}
                     alt="image"
                   />
-                  <p className="w-32">{productInCart.product.title}</p>
+                  <p className="md:w-32">{productInCart.product.title}</p>
                 </div>
                 <div>
                   <p>Price: {productInCart.product.price}$</p>
