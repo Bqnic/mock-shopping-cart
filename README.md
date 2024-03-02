@@ -6,6 +6,6 @@ Made with TypeScript (React) & TailWind CSS with a little bit of vanilla CSS for
 
 No backend yet.
 
-![](mock.gif)
+![](mockgif.gif)
 
 
